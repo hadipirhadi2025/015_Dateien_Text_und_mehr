@@ -88,4 +88,23 @@ public class DateiZugriff {
       }
       return ruechgabe;
     }
+
+    /**
+     * Alle Arten von Daten Können gelesen werden mit einem InputStream
+     * Alle Arten von Daten können geschriebenw werden mt einem OutStream
+     * @param quelle Datei mit Bild
+     * @param ziel Kopie des Bildes
+     */
+    public void einfachKopieren(File quelle, File ziel){
+        try(InputStream leser = new FileInputStream(quelle);
+        OutputStream schreiber = new FileOutputStream(ziel)){
+            while (true){
+                int gelesen = leser.read();
+            }
+        }catch (IOException schreibLeseAusnahme){
+            schreibLeseAusnahme.printStackTrace();
+
+        }
+
+    }
 }
