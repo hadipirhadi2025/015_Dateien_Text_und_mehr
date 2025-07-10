@@ -1,7 +1,6 @@
 package de.meinlade.persistenz.pojos;
 
 import java.io.*;
-import java.net.PortUnreachableException;
 
 /**
  * <pre>
@@ -121,6 +120,17 @@ public class DateiZugriff {
             }
         } catch (IOException schreibLeseAusnahme) {
             schreibLeseAusnahme.printStackTrace();
+
+        }
+    }
+
+    public void speichernMarmelade (File ziel, Marmelade marmelade){
+        try(OutputStream schreiber = new FileOutputStream(ziel);
+            ObjectOutput objectOutput = new ObjectOutputStream(schreiber)){
+            objectOutput.writeObject(marmelade);
+        }catch (IOException marmeladeAusnahme){
+            System.out.println("Fehler bei Object schreiben " + marmeladeAusnahme.getMessage() );
+            marmeladeAusnahme.printStackTrace();
 
         }
     }
