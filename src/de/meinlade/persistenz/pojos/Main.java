@@ -43,6 +43,8 @@ public class Main {
         File marmeladenSpeicher = new File("objekte/Lecker.marmelade");
         //System.out.println(neueMarmelade);
         //james.speichernMarmelade(marmeladenSpeicher, neueMarmelade);
+        Marmelade ausdemSpeichern = james.lesenMarmelade(marmeladenSpeicher);
+        System.out.println(ausdemSpeichern);
         System.out.println("--- Das Programm endet um " + LocalTime.now() + " Uhr ---\n");
     }
 }

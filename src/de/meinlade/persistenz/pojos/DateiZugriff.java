@@ -142,7 +142,7 @@ public class DateiZugriff {
         Marmelade reuckgabe = null ;
 
         try(ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(quelle))){
-            objectInputStream.readObject();
+            reuckgabe = (Marmelade) objectInputStream.readObject();
         }catch (IOException objektAusnahme){
             objektAusnahme.printStackTrace();
         } catch (ClassNotFoundException klassAusnahme) {
