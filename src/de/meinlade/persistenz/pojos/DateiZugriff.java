@@ -1,9 +1,7 @@
 package de.meinlade.persistenz.pojos;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
+import java.io.*;
+import java.net.PortUnreachableException;
 
 /**
  * <pre>
@@ -38,5 +36,56 @@ public class DateiZugriff {
             System.out.println("Fehler bei schreiben " + schreibAusnahme.getMessage() );
             schreibAusnahme.printStackTrace();
         }
+    }
+
+    /**
+     * <pre>
+     *     new BufferedWritter(schreiber): Dekorieren eines bestehenden Objekts
+     *     ButteredWriter kann mehr.
+     *     Batenströme sind mir Decorator Design Pattern organisiert;
+     *     Im Konstruktur der Kindklasse muss ein Objekt edr Elternklasse übergeben werden.
+     *     Buchempfehlung : Head First
+     *     Totorial: Tutorisls Point Design Pattern
+     * </pre>
+     * @param ziel Datei
+     * @param text der Text
+     */
+    public void besserSchreiben(File ziel, String text){
+        try(Writer schreiber = new FileWriter(ziel,true);
+            BufferedWriter besserSchreiber = new BufferedWriter(schreiber)){
+            besserSchreiber.newLine();
+            besserSchreiber.write(text);
+
+        }catch(IOException schreibAusnahme){
+            System.out.println("Fehler bei schreiben " + schreibAusnahme.getMessage() );
+            schreibAusnahme.printStackTrace();
+        }
+    }
+
+    /**
+     * besssserLesser.readLine(); gibt zurück die nächste gelesene Zeile oder null am Ende der Datei
+     * @param quelle Datei
+     * @return
+     */
+    public String lesenVonText(File quelle){
+      String ruechgabe = "";
+
+      try(Reader leser = new FileReader(quelle);
+          BufferedReader besserLeser = new BufferedReader(leser)
+      ){
+
+          while (true){
+              String geleseneZeile = besserLeser.readLine();
+
+              if(geleseneZeile==null){
+                  break;
+              }
+              ruechgabe += geleseneZeile+ " \n" ;
+          }
+      }catch(IOException leseAusnahme){
+          System.out.println("Fehler bei lese :" + leseAusnahme.getMessage());
+          leseAusnahme.printStackTrace();
+      }
+      return ruechgabe;
     }
 }

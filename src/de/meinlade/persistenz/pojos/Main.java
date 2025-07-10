@@ -28,7 +28,10 @@ public class Main {
 
         File fileMitUhrzeit = new File("texte/Uhrzeiz.txt");
         String textMitUhrzeit = "Aktuell is es " + LocalTime.now() ;
-        james.einfachScreiben(fileMitUhrzeit, textMitUhrzeit);
+        //james.einfachScreiben(fileMitUhrzeit, textMitUhrzeit);
+        james.besserSchreiben(fileMitUhrzeit, textMitUhrzeit);
+        String gelesenAusDatei = james.lesenVonText(fileMitUhrzeit);
+        System.out.println(gelesenAusDatei);
 
         System.out.println("--- Das Programm endet um " + LocalTime.now() + " Uhr ---\n");
     }
