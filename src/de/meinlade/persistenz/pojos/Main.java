@@ -32,6 +32,14 @@ public class Main {
         james.besserSchreiben(fileMitUhrzeit, textMitUhrzeit);
         String gelesenAusDatei = james.lesenVonText(fileMitUhrzeit);
         System.out.println(gelesenAusDatei);
+        System.out.println("\n --------------- " + LocalTime.now() + "--------------------");
+        File bild = new File("bilder/my.png");
+        File bildKopie1 = new File("bilder/newcopy.png");
+        james.einfachKopieren(bild, bildKopie1);
+        System.out.println("----- Kopieren um: " + LocalTime.now() + "--------------");
+        james.besserKopieren(bild, new File("bilder/bestecopy.png"));
+
+
 
         System.out.println("--- Das Programm endet um " + LocalTime.now() + " Uhr ---\n");
     }

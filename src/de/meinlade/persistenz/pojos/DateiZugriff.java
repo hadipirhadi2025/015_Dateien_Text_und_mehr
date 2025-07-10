@@ -100,11 +100,28 @@ public class DateiZugriff {
         OutputStream schreiber = new FileOutputStream(ziel)){
             while (true){
                 int gelesen = leser.read();
+                if(gelesen == -1){
+                    break;
+                }
+                schreiber.write(gelesen);
             }
         }catch (IOException schreibLeseAusnahme){
             schreibLeseAusnahme.printStackTrace();
 
         }
 
+    }
+
+    public void besserKopieren(File quelle, File ziel) {
+        try (BufferedInputStream besserLeser = new BufferedInputStream(new FileInputStream(quelle));
+             BufferedOutputStream besserShreiber = new BufferedOutputStream(new FileOutputStream(ziel))) {
+            byte[] puffer = new byte[1024];
+            while (besserLeser.read(puffer) != -1) {
+                besserShreiber.write(puffer);
+            }
+        } catch (IOException schreibLeseAusnahme) {
+            schreibLeseAusnahme.printStackTrace();
+
+        }
     }
 }
