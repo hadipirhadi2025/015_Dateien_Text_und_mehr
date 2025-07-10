@@ -134,4 +134,21 @@ public class DateiZugriff {
 
         }
     }
+
+    /**
+     *
+     */
+    public Marmelade lesenMarmelade(File quelle){
+        Marmelade reuckgabe = null ;
+
+        try(ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(quelle))){
+            objectInputStream.readObject();
+        }catch (IOException objektAusnahme){
+            objektAusnahme.printStackTrace();
+        } catch (ClassNotFoundException klassAusnahme) {
+            System.out.println(klassAusnahme.getMessage());
+            System.out.println("Mehr Infos in der Klassenbeschreibung");
+        }
+        return reuckgabe;
+    }
 }

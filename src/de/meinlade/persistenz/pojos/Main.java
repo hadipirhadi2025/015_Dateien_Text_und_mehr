@@ -39,10 +39,10 @@ public class Main {
         System.out.println("----- Kopieren um: " + LocalTime.now() + "--------------");
         james.besserKopieren(bild, new File("bilder/bestecopy.png"));
         System.out.println("--------- Jetzt kochen wir Marmelade und speichern die -----");
-        Marmelade neueMarmelade = new Marmelade("Lakritz mit Banane", 95, LocalDate.now());
+        //Marmelade neueMarmelade = new Marmelade("Lakritz mit Banane", 95, LocalDate.now());
         File marmeladenSpeicher = new File("objekte/Lecker.marmelade");
-        System.out.println(neueMarmelade);
-        james.speichernMarmelade(marmeladenSpeicher, neueMarmelade);
+        //System.out.println(neueMarmelade);
+        //james.speichernMarmelade(marmeladenSpeicher, neueMarmelade);
         System.out.println("--- Das Programm endet um " + LocalTime.now() + " Uhr ---\n");
     }
 }
